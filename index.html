@@ -2,7 +2,7 @@
 
 <html lang="en" xmlns="http://www.w3.org/1999/xhtml">
 <head>
-    <meta charset="utf-8" />
+    <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>lzq</title>
     <style>
@@ -21,6 +21,9 @@
             height: 65%;
             background-color: beige;
         }
+        p{
+            border: 1px solid blue;
+        }
 
         footer {
             height: 10%;
@@ -31,10 +34,35 @@
 </head>
 <body>
     <header>我的网站</header>
-    <main>20223492罗兹全</main>
+    <main>20223492罗兹全
+      <p id="word">abandon</p>
+      <p id="pronounce">/ə'bændən/</p>
+      <p id="chinese">vt.离弃,丢弃;遗弃,抛弃;放弃</p>
+    </main>
     <footer>江西科技师范大学</footer>
     <script>
         document.body.style.height= innerHeight-15+ "px";
+        let strCET6 = '' ;
+        let arrCET6 = [] ;
+        fetch('cet6.txt')
+        .then(res => res.text())
+        .then(txt => {
+                 strCET6 = txt ;
+                 arrCET6 =  strCET6.split('\r\n') ;
+                 let rand = Math.floor(arrCET6.length * Math.random() ) ;
+                 let cetWord = arrCET6[rand] ;
+                 let begin = cetWord.indexOf('\t') ;
+                 let end =  cetWord.lastIndexOf('\t') ;
+                 let word = cetWord.slice(0,begin) ;
+                 let pronounce = cetWord.slice(begin+1,end) ;
+                 let chinese = cetWord.slice(end+1) ;
+                    select('#word').textContent = word ;
+                    select('#pronounce').textContent = pronounce ;
+                    select('#chinese').textContent =chinese ;
+                }) ;
+        function select(str){
+        let dom = document.querySelector(str);
+        return dom ;}
     </script>
 </body>
 </html>
