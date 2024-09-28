@@ -104,9 +104,19 @@
                let rand = Math.floor(Math.random() * Model.CET6.length) ;
                UI.headerLog(Model.CET6[rand] ) ;
                UI.log("我已经读入了"+ Model.CET6.length + "单词!")
+                let str=Model.CET6[rand]
+                let begin=str.indexOf('\t');
+                let end=str.lastIndexOf('\t');
+                console.log('b:'+begin+'e:'+end);
+                let en=str.slice(0,begin);
+                let pr=str.slice(begin+1,end);
+                let cn=str.slice(end+1);
+                select('p#word').textContent=en;
+                select('p#pronounce').textContent=pr;
+                select('p#chinese').textContent=cn;
            }
            
-         } ;
+         } ;     
         function select(selector){
            let dom = document.querySelector(selector) ;
            return dom ;
