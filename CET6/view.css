@@ -36,6 +36,7 @@
         border: none;
         background-color: black;
         color:greenyellow;
+        margin: 2px;
     }
     button:hover{
         color:white;
@@ -91,7 +92,7 @@
     }
     p.cn{
       border:1px solid blue ;
-      background-color: antiquewhite;
+      background-color: aqua;
       cursor: pointer;
       font-size: 0.8em;
       padding:0.2em 0.1em ;
